@@ -20,6 +20,8 @@ namespace TaskManager.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegistrationRequestDto model)
         {
+            if (!model.isValide(out string message)) return BadRequest(message);
+
             var response = await _authService.Register(model);
             if (!response.IsSuccess)
             {
@@ -31,6 +33,8 @@ namespace TaskManager.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] LoginRequestDto model)
         {
+            if (!model.isValide(out string message)) return BadRequest(message);
+
             var response = await _authService.Login(model);
             if (!response.IsSuccess)
             {

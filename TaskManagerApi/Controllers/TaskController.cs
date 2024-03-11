@@ -72,6 +72,8 @@ namespace TaskManager.Controllers
         [HttpPost]
         public async Task<ActionResult> AddTask([FromBody] TaskDto taskDto)
         {
+            if (!taskDto.isValide(out string message)) return BadRequest(message);
+
             var guidStr = User.FindFirstValue("userId");
             if (Guid.TryParse(guidStr, out Guid currUserId))
             {
@@ -88,12 +90,14 @@ namespace TaskManager.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateTask(Guid id ,[FromBody] TaskDto request)
+        public async Task<ActionResult> UpdateTask(Guid id ,[FromBody] TaskDto taskDto)
         {
+            if (!taskDto.isValide(out string message)) return BadRequest(message);
+
             var guidStr = User.FindFirstValue("userId");
             if (Guid.TryParse(guidStr, out Guid currUserId))
             {
-                var response = await _taskService.UpdateTask(id, request, currUserId);
+                var response = await _taskService.UpdateTask(id, taskDto, currUserId);
                 if (!response.IsSuccess)
                     return StatusCode(response.StatusCode, response);
                 return Ok(response);
