@@ -1,0 +1,72 @@
+# Ignore the bin and obj directories
+bin/
+obj/
+
+# Ignore user-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore built files
+*.dll
+*.exe
+*.pdb
+*.dll.config
+
+# Ignore Visual Studio files
+.vscode/
+.vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+*.sln.ide
+*.sln.ide-shm
+*.sln.ide-wal
+*.sln.ide-wal.bk
+
+# Ignore NuGet packages
+*.nuget.props
+*.nuget.targets
+*.paket/paket.exe
+
+# Ignore build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio Code directories
+.vscode/
+
+# Rider
+.idea/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Mono-specific directories
+mono_crash.*
+
+# GhostDoc plugin setting file
+*.GhostDoc.xml
+
+# Visual Studio 2022
+.vs2019/
+*.psess
+*.vsp
+*.vspx
+*.vsix
