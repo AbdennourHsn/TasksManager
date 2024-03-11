@@ -1,4 +1,4 @@
-# TaskManager
+# TaskManagerAPI
 Task management system using .NET technologies. This system will allow users to manage their tasks efficiently, providing features to create, update, delete, and list tasks
 
 This ASP.NET Web API project serves as a task manager application, allowing users to perform various actions related to task management. It consists of two main controllers:
@@ -105,3 +105,23 @@ Endpoints:
     }
 
 **..Swagger/ConfigureSwaggerOptions.cs**: Implements SwaggerGenOptions configuration to add JWT authentication security definition and requirement for Swagger UI, facilitating secure API documentation with JWT support.
+
+
+
+
+# TaskManager Unit Test
+
+The project includes unit tests for the TaskController using xUnit.net and FluentAssertions.
+
+
+## Getting Started
+
+	1- Clone the repository.
+	
+	2- Configure the database connection in appsettings.json.
+	
+	3- Run the application.
+	
+	4- Explore the API endpoints using tools like Postman or Swagger.
+ 
+
