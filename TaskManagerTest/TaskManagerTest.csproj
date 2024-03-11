@@ -31,6 +31,6 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TaskManager\TaskManagerApi.csproj" />
+    <ProjectReference Include="..\TaskManagerApi\TaskManagerApi.csproj" />
   </ItemGroup>
 </Project>
