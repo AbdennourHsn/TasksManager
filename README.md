@@ -90,6 +90,14 @@ Endpoints:
 ## Substantial Classes
 **1-DTOs/ResponseDto.cs** : Standardizes API responses with result, success status, message, and status code, unifying responses across requests for clarity and consistency, with static factory responce for each responce case.
 
+		public class ResponseDto
+  		{
+			public object? Result { get; set; }
+		        public bool IsSuccess { get; set; } = true;
+		        public string Message { get; set; } = "";
+		        public int StatusCode { get; set; } = HttpStatusCode.OK;
+		}
+
 **2-HttpStatusCode.cs** : Provides integer constants for common HTTP status codes, simplifying status code usage in web applications.
 
 	public static class HttpStatusCode
