@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using FakeItEasy;
 using FluentAssertions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TaskManager;
 using TaskManager.Controllers;
@@ -35,7 +36,7 @@ namespace TaskManagerTest.Controller
             Assert.NotNull(result);
             result.Should().BeOfType(typeof(OkObjectResult));
             var okResult = Assert.IsType<OkObjectResult>(result);
-            Assert.Equal((int)HttpStatusCode.OK, okResult.StatusCode);
+            Assert.Equal(HttpStatusCode.OK, okResult.StatusCode);
         }
 
 
@@ -62,7 +63,7 @@ namespace TaskManagerTest.Controller
             {
                 ControllerContext = new ControllerContext
                 {
-                    HttpContext = new Microsoft.AspNetCore.Http.DefaultHttpContext
+                    HttpContext = new DefaultHttpContext
                     {
                         User = fakeUser
                     }
@@ -97,7 +98,7 @@ namespace TaskManagerTest.Controller
             {
                 ControllerContext = new ControllerContext
                 {
-                    HttpContext = new Microsoft.AspNetCore.Http.DefaultHttpContext
+                    HttpContext = new DefaultHttpContext
                     {
                         User = fakeUser
                     }
@@ -117,7 +118,13 @@ namespace TaskManagerTest.Controller
         {
             var taskId = Guid.NewGuid();
             var userId = Guid.NewGuid();
-            var taskDto = new TaskDto { /* Initialize your task DTO object */ };
+            var taskDto = new TaskDto
+            {
+                Title = "TaskTest",
+                Statut = TaskStatut.open,
+                Discription = "test test",
+                deadLine = DateTime.UtcNow
+            };
             var fakeUser = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
             {
                 new Claim("userId", userId.ToString())
@@ -128,9 +135,9 @@ namespace TaskManagerTest.Controller
 
             var controller = new TaskController(_taskService)
             {
-                ControllerContext = new Microsoft.AspNetCore.Mvc.ControllerContext
+                ControllerContext = new ControllerContext
                 {
-                    HttpContext = new Microsoft.AspNetCore.Http.DefaultHttpContext
+                    HttpContext = new DefaultHttpContext
                     {
                         User = fakeUser
                     }
@@ -142,8 +149,8 @@ namespace TaskManagerTest.Controller
 
             // Assert
             Assert.NotNull(result);
-            var okResult = Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
-            Assert.Equal((int)HttpStatusCode.OK, okResult.StatusCode);
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal(HttpStatusCode.OK, okResult.StatusCode);
         }
 
     }
