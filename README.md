@@ -88,9 +88,9 @@ Endpoints:
 
 
 ## Substantial Classes
-**..DTOs/ResponseDto.cs** : Standardizes API responses with result, success status, message, and status code, unifying responses across requests for clarity and consistency, with static factory responce for each responce case.
+** 1-DTOs/ResponseDto.cs** : Standardizes API responses with result, success status, message, and status code, unifying responses across requests for clarity and consistency, with static factory responce for each responce case.
 
-**..HttpStatusCode.cs** : Provides integer constants for common HTTP status codes, simplifying status code usage in web applications.
+** 2-HttpStatusCode.cs** : Provides integer constants for common HTTP status codes, simplifying status code usage in web applications.
 
 	public static class HttpStatusCode
 	{
@@ -104,12 +104,12 @@ Endpoints:
         public const int InternalServerError = 500;
     }
 
-**..Swagger/ConfigureSwaggerOptions.cs**: Implements SwaggerGenOptions configuration to add JWT authentication security definition and requirement for Swagger UI, facilitating secure API documentation with JWT support.
+** 3-Swagger/ConfigureSwaggerOptions.cs**: Implements SwaggerGenOptions configuration to add JWT authentication security definition and requirement for Swagger UI, facilitating secure API documentation with JWT support.
 
 
 
 
-# TaskManager Unit Test
+## TaskManager Unit Test
 
 The project includes unit tests for the TaskController using xUnit.net and FluentAssertions.
 
